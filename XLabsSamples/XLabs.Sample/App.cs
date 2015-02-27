@@ -1,5 +1,6 @@
 ﻿using XLabs.Forms.Services;
 using XLabs.Platform.Services;
+using XLabs.Sample.Pages;
 
 namespace XLabs.Sample
 {
@@ -71,36 +72,42 @@ namespace XLabs.Sample
             ViewFactory.Register<SoundPage, SoundServiceViewModel>();
             ViewFactory.Register<RepeaterViewPage, RepeaterViewViewModel>();
             ViewFactory.Register<WaveRecorderPage, WaveRecorderViewModel>();
+            ViewFactory.Register<LoginPage,LoginViewModel>();
 
-            var mainTab = new ExtendedTabbedPage()
-            {
-                Title = "Xamarin Forms Labs",
-                SwipeEnabled = true,
-                TintColor = Color.White,
-                BarTintColor = Color.Blue,
-                Badges = { "1", "2", "3","4" },
-                TabBarBackgroundImage = "ToolbarGradient2.png",
-                TabBarSelectedImage = "blackbackground.png",
-            };
 
-            var mainPage = new NavigationPage(mainTab);
+            #region 屏蔽
+            //var mainTab = new ExtendedTabbedPage()
+            //{
+            //    Title = "Xamarin Forms Labs",
+            //    SwipeEnabled = true,
+            //    TintColor = Color.White,
+            //    BarTintColor = Color.Blue,
+            //    Badges = { "1", "2", "3","4" },
+            //    TabBarBackgroundImage = "ToolbarGradient2.png",
+            //    TabBarSelectedImage = "blackbackground.png",
+            //};
 
-            Resolver.Resolve<IDependencyContainer>()
-                .Register<INavigationService>(t => new NavigationService(mainPage.Navigation));
+            //var mainPage = new NavigationPage(mainTab);
 
-            mainTab.CurrentPageChanged += () => Debug.WriteLine("ExtendedTabbedPage CurrentPageChanged {0}", mainTab.CurrentPage.Title);
+            //Resolver.Resolve<IDependencyContainer>()
+            //    .Register<INavigationService>(t => new NavigationService(mainPage.Navigation));
 
-            var controls = GetControlsPage(mainPage);
-            var services = GetServicesPage(mainPage);
-            var charts = GetChartingPage(mainPage);
+            //mainTab.CurrentPageChanged += () => Debug.WriteLine("ExtendedTabbedPage CurrentPageChanged {0}", mainTab.CurrentPage.Title);
 
-            var mvvm = ViewFactory.CreatePage<MvvmSampleViewModel, Page>();
+            //var controls = GetControlsPage(mainPage);
+            //var services = GetServicesPage(mainPage);
+            //var charts = GetChartingPage(mainPage);
 
-            mainTab.Children.Add(controls);
-            mainTab.Children.Add(services);
-            mainTab.Children.Add(charts);
-            mainTab.Children.Add(mvvm as Page);
+            //var mvvm = ViewFactory.CreatePage<MvvmSampleViewModel, Page>();
 
+            //mainTab.Children.Add(controls);
+            //mainTab.Children.Add(services);
+            //mainTab.Children.Add(charts);
+            //mainTab.Children.Add(mvvm as Page);
+
+            //return mainPage;
+            #endregion
+            var mainPage = new NavigationPage((Page) ViewFactory.CreatePage<LoginViewModel, Page>());
             return mainPage;
         }
 

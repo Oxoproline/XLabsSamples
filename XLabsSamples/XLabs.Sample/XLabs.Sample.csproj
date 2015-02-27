@@ -88,6 +88,9 @@
     </Compile>
     <Compile Include="Pages\Controls\SegmentPage.cs" />
     <Compile Include="Pages\Controls\WebHybridTestPage.cs" />
+    <Compile Include="Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Services\EmailPage.cs" />
     <Compile Include="Pages\Services\SecureStoragePage.xaml.cs">
       <DependentUpon>SecureStoragePage.xaml</DependentUpon>
@@ -119,9 +122,11 @@
     <Compile Include="Pages\Services\TextToSpeechPage.xaml.cs">
       <DependentUpon>TextToSpeechPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\LoginService.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CameraViewModel.cs" />
     <Compile Include="ViewModel\GestureSampleVM.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RepeaterViewViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -345,6 +350,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http">
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.28\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
     </Reference>
@@ -406,6 +414,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Controls\DragPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

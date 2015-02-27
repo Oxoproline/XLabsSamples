@@ -1,4 +1,7 @@
 ﻿// ReSharper disable once CheckNamespace
+
+using XLabs.Forms.Mvvm;
+
 namespace Xamarin.Forms.Labs.Sample
 {
 	using System;
@@ -8,6 +11,8 @@ namespace Xamarin.Forms.Labs.Sample
 
 	public class BaseViewModel : INotifyPropertyChanged
     {
+        public ViewModelNavigation Navigation { get; set; }
+
         // boiler-plate
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
